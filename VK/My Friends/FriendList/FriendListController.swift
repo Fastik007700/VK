@@ -16,16 +16,21 @@ class FriendListController: UITableViewController {
     
     private var arrayOfImage: [UIImage?]?
     private var arrayOfImageLinks: [String]?
-    private var myFriends: [FriendsParams]?
+    private var myFriends: [FriendStruct]?
+    private var vkServiceAdapter = VkServiceAdapter()
     
     
     
     private func fillTableData() {
-        VKApiService(token: globalToken, id: globalID).getFriendList {
-            self.myFriends = DataBase().loadDataFriends()
-            self.tableView.reloadData()
-        }
+        vkServiceAdapter.getFriendListAdapter(complection: { array in
+            self.myFriends = array
+            DispatchQueue.main.async {
+                 self.tableView.reloadData()
+            }
+        })
+        
     }
+    
     
     private func setupUI() {
         self.navigationController?.navigationBar.barTintColor =  .vkColor

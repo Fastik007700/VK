@@ -11,7 +11,9 @@ import RealmSwift
 
 class MyGroupsController: UITableViewController {
     
-    var myGroups = [GroupsParams]()
+   private var myGroups = [GroupStruct]()
+    
+    private var vkServiceAdapter = VkServiceAdapter()
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +40,7 @@ class MyGroupsController: UITableViewController {
             
             cell.groupNameLabel.text = myGroups[indexPath.row].name
             cell.avatarURL = myGroups[indexPath.row].photo_100
-            cell.subsOfGroupLabel.text = "Кол-во подписчиков: \(myGroups[indexPath.row].members_count)"
+            cell.subsOfGroupLabel.text = "Кол-во подписчиков: \(myGroups[indexPath.row].member_count)"
             return cell
         }
         else {
@@ -54,12 +56,10 @@ class MyGroupsController: UITableViewController {
     }
     
     private func groupsData() {
-        VKApiService(token: globalToken, id: globalID).getGroups() { () in
-            self.myGroups = DataBase().loadDataGroups()
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-            
-        }
+        
+        vkServiceAdapter.getGroups(complection: { array in
+            self.myGroups = array
+            self.tableView.reloadData()
+        })
     }
 }

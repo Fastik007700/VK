@@ -32,6 +32,7 @@ class VKApiService {
             "v":apiVersion,
             "fields":"photo_100"
         ]
+    
         let methodName = "friends.get"
         Alamofire.request((baseUrl?.appendingPathComponent(methodName))!, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { (response) in
             guard let data = response.value else {return}
@@ -43,7 +44,6 @@ class VKApiService {
                 completion()
             }
         }
-        
     }
     
     public func getPhoto(currentID:Int, comlection: @escaping([ItemParams])->Void) {
