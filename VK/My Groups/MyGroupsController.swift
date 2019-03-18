@@ -10,10 +10,10 @@ import UIKit
 import RealmSwift
 
 class MyGroupsController: UITableViewController {
-
+    
     var myGroups = [GroupsParams]()
     
-
+    
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.global().async {
             self.groupsData()
@@ -26,7 +26,7 @@ class MyGroupsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if allUrGroupsList != nil {
-        return allUrGroupsList!.count
+            return allUrGroupsList!.count
         }
         else {
             return 0
@@ -35,11 +35,11 @@ class MyGroupsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "myGroups", for: indexPath) as? CellForGroups {
-        
-        cell.groupNameLabel.text = myGroups[indexPath.row].name
+            
+            cell.groupNameLabel.text = myGroups[indexPath.row].name
             cell.avatarURL = myGroups[indexPath.row].photo_100
             cell.subsOfGroupLabel.text = "Кол-во подписчиков: \(myGroups[indexPath.row].members_count)"
-        return cell
+            return cell
         }
         else {
             return UITableViewCell()

@@ -12,7 +12,7 @@ import RealmSwift
 
 class DataBase {
     
-   private let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+    private let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
     
     public func saveVKDataFriends(_ friends: [FriendsParams]) {
         do {
@@ -48,12 +48,12 @@ class DataBase {
     
     
     public func loadDataGroups() -> [GroupsParams] {
-       var returnGroups = [GroupsParams]()
+        var returnGroups = [GroupsParams]()
         do {
             let realm = try? Realm()
             print(realm?.configuration.fileURL)
             if let groups = realm?.objects(GroupsParams.self) {
-            returnGroups = Array(groups)
+                returnGroups = Array(groups)
             }
             return returnGroups
         }
@@ -65,7 +65,7 @@ class DataBase {
     
     
     public func loadDataFriends() -> [FriendsParams] {
-    var returnFriends = [FriendsParams]()
+        var returnFriends = [FriendsParams]()
         do {
             let realm = try? Realm()
             print(realm?.configuration.fileURL)
@@ -79,7 +79,4 @@ class DataBase {
             return []
         }
     }
-    
-    
-    
 }

@@ -18,27 +18,25 @@ class FriendListController: UITableViewController {
     private var arrayOfImageLinks: [String]?
     private var myFriends: [FriendsParams]?
     
-
+    
     
     private func fillTableData() {
         VKApiService(token: globalToken, id: globalID).getFriendList {
             self.myFriends = DataBase().loadDataFriends()
-                self.tableView.reloadData()
+            self.tableView.reloadData()
         }
     }
     
-
-    
     @IBAction func refresh(_ sender: UIBarButtonItem) {
-       fillTableData()
+        fillTableData()
     }
     var txName = String()
     
     override func viewWillAppear(_ animated: Bool) {
         fillTableData()
-      
+        
     }
-
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showPhotoOfFriends" {
@@ -56,26 +54,24 @@ class FriendListController: UITableViewController {
         if let count = myFriends?.count {
             return count
         }
-            else {
-                return 0
-            }
-            
-    
+        else {
+            return 0
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as? CellFriendList {
-                if self.myFriends?[indexPath.row].first_name != nil && self.myFriends![indexPath.row].last_name != nil  {
-               
-                    cell.nameLabel.text = "\(self.myFriends![indexPath.row].first_name) \(self.myFriends![indexPath.row].last_name)"
-                    cell.imageDowloadURL = self.myFriends![indexPath.row].photo_100
+            if self.myFriends?[indexPath.row].first_name != nil && self.myFriends![indexPath.row].last_name != nil  {
+                
+                cell.nameLabel.text = "\(self.myFriends![indexPath.row].first_name) \(self.myFriends![indexPath.row].last_name)"
+                cell.imageDowloadURL = self.myFriends![indexPath.row].photo_100
             }
             else {
                 cell.nameLabel.text = "Загрузка..."
                 cell.photoImage.image = nil
             }
             
-        return cell
+            return cell
         }
         else {
             return UITableViewCell()

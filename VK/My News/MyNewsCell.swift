@@ -57,7 +57,7 @@ class MyNewsCell: UITableViewCell {
     @IBOutlet weak var postImage: UIImageView!
         {
         didSet {
-           postImage.translatesAutoresizingMaskIntoConstraints = false
+            postImage.translatesAutoresizingMaskIntoConstraints = false
         }
     }
     
@@ -201,11 +201,4 @@ class MyNewsCell: UITableViewCell {
         numberOfComments.frame = CGRect(origin: commentsOrigin, size: commentsTextSize)
     }
     
-    
-    
-    
-    
-    
-    
-
 }
