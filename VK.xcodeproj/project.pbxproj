@@ -23,6 +23,8 @@
 		74311766223F844E008F92A8 /* VkServiceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74311765223F844E008F92A8 /* VkServiceAdapter.swift */; };
 		74311769223F8686008F92A8 /* FriendStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74311768223F8686008F92A8 /* FriendStruct.swift */; };
 		7431176C223F8E3F008F92A8 /* GroupStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7431176B223F8E3F008F92A8 /* GroupStruct.swift */; };
+		7431177A22400440008F92A8 /* FriendsViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7431177922400440008F92A8 /* FriendsViewModelFactory.swift */; };
+		7431177C224004E4008F92A8 /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7431177B224004E4008F92A8 /* FriendsViewModel.swift */; };
 		7437E8A7212C0EC50063ADD3 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7437E8A6212C0EC40063ADD3 /* DataBase.swift */; };
 		7461C36B210EEB54003BFAE8 /* VKApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7461C36A210EEB54003BFAE8 /* VKApiService.swift */; };
 		7467CCBD20FBB960006B6414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7467CCBC20FBB960006B6414 /* AppDelegate.swift */; };
@@ -52,6 +54,8 @@
 		74311765223F844E008F92A8 /* VkServiceAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkServiceAdapter.swift; sourceTree = "<group>"; };
 		74311768223F8686008F92A8 /* FriendStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendStruct.swift; sourceTree = "<group>"; };
 		7431176B223F8E3F008F92A8 /* GroupStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupStruct.swift; sourceTree = "<group>"; };
+		7431177922400440008F92A8 /* FriendsViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModelFactory.swift; sourceTree = "<group>"; };
+		7431177B224004E4008F92A8 /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
 		7437E8A6212C0EC40063ADD3 /* DataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		7461C36A210EEB54003BFAE8 /* VKApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApiService.swift; sourceTree = "<group>"; };
 		7467CCB920FBB960006B6414 /* VK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +113,8 @@
 			children = (
 				742D11D72104C56B008A9C78 /* FriendListController.swift */,
 				742D11D92104C583008A9C78 /* CellFriendList.swift */,
+				7431177922400440008F92A8 /* FriendsViewModelFactory.swift */,
+				7431177B224004E4008F92A8 /* FriendsViewModel.swift */,
 			);
 			path = FriendList;
 			sourceTree = "<group>";
@@ -340,6 +346,7 @@
 				742BBC6821256F680046B950 /* MyNewsController.swift in Sources */,
 				74311766223F844E008F92A8 /* VkServiceAdapter.swift in Sources */,
 				7481A172210F1D7D003FC92A /* Groups.swift in Sources */,
+				7431177A22400440008F92A8 /* FriendsViewModelFactory.swift in Sources */,
 				742D11DF2104D248008A9C78 /* FriendsPhotoController.swift in Sources */,
 				742D11EA2104F584008A9C78 /* CellForGroups.swift in Sources */,
 				7437E8A7212C0EC50063ADD3 /* DataBase.swift in Sources */,
@@ -350,6 +357,7 @@
 				7461C36B210EEB54003BFAE8 /* VKApiService.swift in Sources */,
 				742D11D82104C56B008A9C78 /* FriendListController.swift in Sources */,
 				7467CCBD20FBB960006B6414 /* AppDelegate.swift in Sources */,
+				7431177C224004E4008F92A8 /* FriendsViewModel.swift in Sources */,
 				742D11EC2104F59A008A9C78 /* CommonGroupsController.swift in Sources */,
 				742BBC6E212590E50046B950 /* MyNewsCell.swift in Sources */,
 				74CA42BC2109BA9A009FC607 /* VKLoginController.swift in Sources */,
