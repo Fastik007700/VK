@@ -27,6 +27,11 @@ class FriendListController: UITableViewController {
         }
     }
     
+    private func setupUI() {
+        self.navigationController?.navigationBar.barTintColor =  .vkColor
+        self.navigationController?.navigationBar.tintColor = .white
+    }
+    
     @IBAction func refresh(_ sender: UIBarButtonItem) {
         fillTableData()
     }
@@ -35,6 +40,10 @@ class FriendListController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         fillTableData()
         
+    }
+    
+    override func viewDidLoad() {
+        self.setupUI()
     }
     
     
