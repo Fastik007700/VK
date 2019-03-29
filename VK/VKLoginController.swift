@@ -24,7 +24,7 @@ class VKLoginController: UIViewController, WKNavigationDelegate {
     var id: String?
     let apiVersion = "&v=5.80"
     
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,19 +33,19 @@ class VKLoginController: UIViewController, WKNavigationDelegate {
         print("LOL")
         loadAuth()
     }
-
+    
     func loadAuth() {
-       var urlComponents = URLComponents()
+        var urlComponents = URLComponents()
         urlComponents.scheme = "http"
         urlComponents.host = "oauth.vk.com"
         urlComponents.path = "/authorize"
         urlComponents.queryItems = [
-        URLQueryItem (name: "client_id" , value: "6641335" ),
-        URLQueryItem (name: "display" , value: "mobile" ),
-        URLQueryItem (name: "redirect_uri" , value: "https://oauth.vk.com/blank.html" ),
-        URLQueryItem (name: "scope" , value: "friends,photos,groups,wall" ),
-        URLQueryItem (name: "response_type" , value: "token" ),
-        URLQueryItem (name: "v" , value: "5.80" )
+            URLQueryItem (name: "client_id" , value: "6641335" ),
+            URLQueryItem (name: "display" , value: "mobile" ),
+            URLQueryItem (name: "redirect_uri" , value: "https://oauth.vk.com/blank.html" ),
+            URLQueryItem (name: "scope" , value: "friends,photos,groups,wall" ),
+            URLQueryItem (name: "response_type" , value: "token" ),
+            URLQueryItem (name: "v" , value: "5.80" )
         ]
         
         let request = URLRequest (url: urlComponents.url!)
@@ -62,7 +62,7 @@ class VKLoginController: UIViewController, WKNavigationDelegate {
                 decisionHandler(.allow)
                 return
         }
-
+        
         let params = fragment
             .components(separatedBy: "&" )
             .map {$0 .components(separatedBy: "=" ) }
@@ -80,6 +80,4 @@ class VKLoginController: UIViewController, WKNavigationDelegate {
             self.performSegue(withIdentifier: "showMain", sender: nil)
         }
     }
-    
-    
 }

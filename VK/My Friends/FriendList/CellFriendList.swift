@@ -27,4 +27,12 @@ class CellFriendList: UITableViewCell {
         photoImage.kf.cancelDownloadTask()
         photoImage.image = nil
     }
+    
+    
+    func configure(with viewModel: FriendsViewModel) {
+        
+        self.nameLabel.text = viewModel.firstName + " " + viewModel.lastName
+        let url = URL(string: viewModel.avatarURL)
+        photoImage.kf.setImage(with: url)
+    }
 }

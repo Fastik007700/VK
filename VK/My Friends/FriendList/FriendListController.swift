@@ -16,29 +16,43 @@ class FriendListController: UITableViewController {
     
     private var arrayOfImage: [UIImage?]?
     private var arrayOfImageLinks: [String]?
-    private var myFriends: [FriendsParams]?
+    private var vkServiceAdapter = VkServiceAdapter()
     
-
+    private var friendsFactory = FriendViewModelFactory()
+    private var viewModels: [FriendsViewModel] = []
+    
+    
     
     private func fillTableData() {
-        VKApiService(token: globalToken, id: globalID).getFriendList {
-            self.myFriends = DataBase().loadDataFriends()
-                self.tableView.reloadData()
-        }
+        vkServiceAdapter.getFriendListAdapter(complection: { array in
+            self.viewModels = self.friendsFactory.constructViewModel(friends: array)
+            DispatchQueue.main.async {
+                 self.tableView.reloadData()
+            }
+        })
+        
     }
     
-
+    
+    private func setupUI() {
+        self.navigationController?.navigationBar.barTintColor =  .vkColor
+        self.navigationController?.navigationBar.tintColor = .white
+    }
     
     @IBAction func refresh(_ sender: UIBarButtonItem) {
-       fillTableData()
+        fillTableData()
     }
     var txName = String()
     
     override func viewWillAppear(_ animated: Bool) {
         fillTableData()
-      
+        
     }
-
+    
+    override func viewDidLoad() {
+        self.setupUI()
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showPhotoOfFriends" {
@@ -53,29 +67,13 @@ class FriendListController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if let count = myFriends?.count {
-            return count
-        }
-            else {
-                return 0
-            }
-            
-    
+        return viewModels.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as? CellFriendList {
-                if self.myFriends?[indexPath.row].first_name != nil && self.myFriends![indexPath.row].last_name != nil  {
-               
-                    cell.nameLabel.text = "\(self.myFriends![indexPath.row].first_name) \(self.myFriends![indexPath.row].last_name)"
-                    cell.imageDowloadURL = self.myFriends![indexPath.row].photo_100
-            }
-            else {
-                cell.nameLabel.text = "Загрузка..."
-                cell.photoImage.image = nil
-            }
-            
-        return cell
+            cell.configure(with: viewModels[indexPath.row])
+            return cell
         }
         else {
             return UITableViewCell()
@@ -83,7 +81,7 @@ class FriendListController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        friendForPhotoID = myFriends![indexPath.row].id
+        friendForPhotoID = viewModels[indexPath.row].id
         performSegue(withIdentifier: "showPhotoOfFriends", sender: nil)
     }
     

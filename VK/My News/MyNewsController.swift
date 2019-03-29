@@ -13,7 +13,7 @@ class MyNewsController: UITableViewController {
     var myNews: [News]!
     var beginFrom: String!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,9 +24,9 @@ class MyNewsController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if myNews != nil {
             return (myNews?.count)!
         }
@@ -39,16 +39,16 @@ class MyNewsController: UITableViewController {
         return 435
     }
     
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath) as! MyNewsCell
         if myNews != nil {
-        cell.avatarURL = myNews[indexPath.row].avatarURL!
-        cell.numberOfLikes.text = String((myNews[indexPath.row].likes?.count)!)
-        cell.numberOfComments.text = String((myNews[indexPath.row].comments?.count)!)
-        cell.numberOfReposts.text = String((myNews[indexPath.row].reposts?.count)!)
-        cell.numberOfViews.text = String((myNews[indexPath.row].views?.count)!)
-        cell.name.text = String((myNews[indexPath.row].name)!)
+            cell.avatarURL = myNews[indexPath.row].avatarURL!
+            cell.numberOfLikes.text = String((myNews[indexPath.row].likes?.count)!)
+            cell.numberOfComments.text = String((myNews[indexPath.row].comments?.count)!)
+            cell.numberOfReposts.text = String((myNews[indexPath.row].reposts?.count)!)
+            cell.numberOfViews.text = String((myNews[indexPath.row].views?.count)!)
+            cell.name.text = String((myNews[indexPath.row].name)!)
             if myNews[indexPath.row].type == "post" {
                 cell.postText.text = myNews[indexPath.row].text
                 cell.postImage.isHidden = true
@@ -62,8 +62,6 @@ class MyNewsController: UITableViewController {
         else {
             return UITableViewCell()
         }
-        
-        
         return cell
     }
     
@@ -73,5 +71,4 @@ class MyNewsController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-
 }

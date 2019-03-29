@@ -23,7 +23,7 @@ class FriendsPhotoController: UICollectionViewController {
         friendID = friendForPhotoID
         getphotoURLS()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print(friendID)
@@ -35,14 +35,14 @@ class FriendsPhotoController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         return imageURLs.count
+        return imageURLs.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CellFriendsPhoto {
             cell.photoURL = (imageURLs[indexPath.row].sizes![0].url)
             return cell
-    }
+        }
         else {
             return UICollectionViewCell()
         }

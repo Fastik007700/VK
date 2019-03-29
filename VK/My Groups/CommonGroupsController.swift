@@ -40,17 +40,15 @@ class CommonGroupsController: UITableViewController, UISearchBarDelegate {
             return UITableViewCell()
         }
     }
-
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("OK")
         if seachBar.text != nil {
-        VKApiService(token: globalToken, id: globalID).seachGroups(search: seachBar.text!) { (groups) in
-            self.seachingGroups = groups
-            self.tableView.reloadData()
+            VKApiService(token: globalToken, id: globalID).seachGroups(search: seachBar.text!) { (groups) in
+                self.seachingGroups = groups
+                self.tableView.reloadData()
+            }
+            self.seachBar.endEditing(true)
         }
-        self.seachBar.endEditing(true)
     }
-    }
-    
-    
 }
