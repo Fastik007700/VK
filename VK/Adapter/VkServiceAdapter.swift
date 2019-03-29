@@ -50,7 +50,7 @@ class VkServiceAdapter: VkServiceAdapterProtocol {
     
     func getFriendListAdapter(complection: @escaping ([FriendStruct]) -> Void) {
 
-        vkService.getFriendList {
+        vkServiceProxy.getFriendList {
             complection(self.friendsStructureAdapter(realmStruct: self.dataBase.loadDataFriends()))
         }
     }
@@ -60,7 +60,7 @@ class VkServiceAdapter: VkServiceAdapterProtocol {
     }
     
     func getGroups(complection: @escaping ([GroupStruct]) -> Void) {
-        vkService.getGroups {
+        vkServiceProxy.getGroups {
             complection(self.groupStructureAdapter(realmStruct: self.dataBase.loadDataGroups()))
         }
     }
