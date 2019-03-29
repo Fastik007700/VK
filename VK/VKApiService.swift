@@ -14,7 +14,17 @@ import RealmSwift
 var allUrFriendsList: [FriendsParams]?
 var allUrGroupsList: [GroupsParams]?
 
-class VKApiService {
+protocol VkApi {
+    
+    func getFriendList(completion: @escaping()->Void)
+    func getPhoto(currentID:Int, comlection: @escaping([ItemParams])->Void)
+    func getGroups(comlection: @escaping () -> Void)
+    func seachGroups(search: String, comlection: @escaping ([GroupsParams])-> Void)
+    func getNews(comlection: @escaping ([News], String?) -> Void)
+    
+}
+
+class VKApiService: VkApi {
     
     private let baseUrl = URL(string: "https://api.vk.com/method/")
     private let baseUrl1 =  "https://api.vk.com/method/"
