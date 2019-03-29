@@ -25,7 +25,7 @@ protocol VkServiceAdapterProtocol {
 class VkServiceAdapter: VkServiceAdapterProtocol {
     
     private var dataBase = DataBase()
-    private var vkService = VKApiService(token: globalToken, id: globalID)
+    private let vkService = VKApiService(token: globalToken, id: globalID)
     private lazy var vkServiceProxy = VkApiProxy(vkServise: vkService)
     
     private func friendsStructureAdapter(realmStruct: [FriendsParams]) -> [FriendStruct] {
