@@ -34,6 +34,7 @@
 		7481A172210F1D7D003FC92A /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7481A171210F1D7D003FC92A /* Groups.swift */; };
 		74856DDF2112ECE200937126 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74856DDE2112ECE200937126 /* Photos.swift */; };
 		74CA42BC2109BA9A009FC607 /* VKLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CA42BB2109BA9A009FC607 /* VKLoginController.swift */; };
+		74D8E363224E1BE9007F08E3 /* VkApiProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D8E362224E1BE9007F08E3 /* VkApiProxy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		7481A171210F1D7D003FC92A /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		74856DDE2112ECE200937126 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		74CA42BB2109BA9A009FC607 /* VKLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginController.swift; sourceTree = "<group>"; };
+		74D8E362224E1BE9007F08E3 /* VkApiProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkApiProxy.swift; sourceTree = "<group>"; };
 		F0E7414E14D6A43E77067AF9 /* Pods-VK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VK/Pods-VK.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -188,6 +190,7 @@
 				7467CCBC20FBB960006B6414 /* AppDelegate.swift */,
 				74CA42BB2109BA9A009FC607 /* VKLoginController.swift */,
 				7461C36A210EEB54003BFAE8 /* VKApiService.swift */,
+				74D8E362224E1BE9007F08E3 /* VkApiProxy.swift */,
 				7437E8A6212C0EC40063ADD3 /* DataBase.swift */,
 				7481A173210F1D8B003FC92A /* Models */,
 				742BBC6421256ED80046B950 /* My News */,
@@ -343,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74D8E363224E1BE9007F08E3 /* VkApiProxy.swift in Sources */,
 				742BBC6821256F680046B950 /* MyNewsController.swift in Sources */,
 				74311766223F844E008F92A8 /* VkServiceAdapter.swift in Sources */,
 				7481A172210F1D7D003FC92A /* Groups.swift in Sources */,
