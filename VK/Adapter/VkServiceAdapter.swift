@@ -25,7 +25,8 @@ protocol VkServiceAdapterProtocol {
 class VkServiceAdapter: VkServiceAdapterProtocol {
     
     private var dataBase = DataBase()
-    private var vkService = VKApiService(token: globalToken, id: globalID)
+    private let vkService = VKApiService(token: globalToken, id: globalID)
+    private lazy var vkServiceProxy = VkApiProxy(vkServise: vkService)
     
     private func friendsStructureAdapter(realmStruct: [FriendsParams]) -> [FriendStruct] {
         var returnStruct: [FriendStruct] = []
@@ -49,7 +50,7 @@ class VkServiceAdapter: VkServiceAdapterProtocol {
     
     func getFriendListAdapter(complection: @escaping ([FriendStruct]) -> Void) {
 
-        vkService.getFriendList {
+        vkServiceProxy.getFriendList {
             complection(self.friendsStructureAdapter(realmStruct: self.dataBase.loadDataFriends()))
         }
     }
@@ -59,7 +60,7 @@ class VkServiceAdapter: VkServiceAdapterProtocol {
     }
     
     func getGroups(complection: @escaping ([GroupStruct]) -> Void) {
-        vkService.getGroups {
+        vkServiceProxy.getGroups {
             complection(self.groupStructureAdapter(realmStruct: self.dataBase.loadDataGroups()))
         }
     }

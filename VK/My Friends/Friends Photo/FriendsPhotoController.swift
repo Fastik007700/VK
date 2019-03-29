@@ -15,8 +15,10 @@ class FriendsPhotoController: UICollectionViewController {
     private let reuseIdentifier = "imageCell"
     
     private var friendID = Int()
-    var imageURLs = [ItemParams]()
-    var friendName = String()
+    private var imageURLs = [ItemParams]()
+    private var friendName = String()
+    private let vkService = VKApiService(token: globalToken, id: globalID)
+    private lazy var vkServiceProxy = VkApiProxy(vkServise: vkService)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +52,7 @@ class FriendsPhotoController: UICollectionViewController {
     
     
     private func getphotoURLS() {
-        VKApiService(token: globalToken, id:globalID).getPhoto(currentID: friendID) { (photos) in
+        vkServiceProxy.getPhoto(currentID: friendID) { (photos) in
             self.imageURLs = photos
             self.collectionView?.reloadData()
             

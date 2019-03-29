@@ -10,10 +10,13 @@ import UIKit
 
 class MyNewsController: UITableViewController {
     
-    var myNews: [News]!
-    var beginFrom: String!
+   private var myNews: [News]!
+   private var beginFrom: String!
     
+    private let vkService = VKApiService(token: globalToken, id: globalID)
+    private lazy var vkServiceProxy = VkApiProxy(vkServise: vkService)
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,7 +69,7 @@ class MyNewsController: UITableViewController {
     }
     
     func fillTableView() {
-        VKApiService(token: globalToken, id: globalID).getNews() { arrayOfNews, startFrom  in
+        vkServiceProxy.getNews() { arrayOfNews, startFrom  in
             self.myNews = arrayOfNews
             self.tableView.reloadData()
         }
